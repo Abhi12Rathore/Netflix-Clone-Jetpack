@@ -13,6 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.netflixclone.ui.theme.NetflixCloneTheme
 import com.example.netflixclone.utils.NavConstants
+import com.example.netflixclone.utils.NavConstants.Companion.HOME_SCREEN
+import com.example.netflixclone.views.HomeScreen
 import com.example.netflixclone.views.ProfileSelection
 import com.example.netflixclone.views.SplashScreen
 
@@ -43,6 +45,10 @@ fun MyApp(){
 
         composable(route=NavConstants.USER_NAME){
             ProfileSelection(navController)
+        }
+
+        composable(route=HOME_SCREEN){
+            HomeScreen(navController)
         }
 
     }
