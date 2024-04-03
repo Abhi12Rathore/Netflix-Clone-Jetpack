@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,14 +28,18 @@ import com.example.netflixclone.R
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    Box {
-        HomeTopBanner()
-        Column() {
-            Spacer(modifier = Modifier.height(30.dp))
-            TopRow()
+    Column {
+        Box {
+            HomeTopBanner()
+            Column() {
+                Spacer(modifier = Modifier.height(30.dp))
+                TopRow()
+            }
         }
 
+        ActionButtons()
     }
+
 }
 
 @Composable
@@ -69,9 +76,50 @@ fun HomeTopBanner() {
     )
 }
 
-@Preview
 @Composable
-fun PreviewBanner() {
-    TopRow()
+fun ActionButtons() {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(all = 20.dp)
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Image(
+                painterResource(id = R.drawable.add_icon_no_background),
+                contentDescription = "add_no_background",
+                modifier = Modifier
+                    .height(20.dp)
+                    .width(20.dp)
+            )
+            Text(text = "My List", fontSize = 13.64.sp)
+        }
+        Spacer(modifier = Modifier.width(20.dp))
+
+        Image(
+            painter = painterResource(R.drawable.home_play_icon),
+            contentDescription = null,
+            modifier = Modifier
+                .paint(
+                    painter = painterResource(R.drawable.play_button_background)
+                )
+                .padding(40.dp),
+        )
+
+        Spacer(modifier = Modifier.width(20.dp))
+
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Image(
+                painterResource(id = R.drawable.info_icon),
+                contentDescription = "info_icon",
+                modifier = Modifier
+                    .height(20.dp)
+                    .width(20.dp)
+
+            )
+            Text(text = "Info", fontSize = 13.64.sp)
+        }
+    }
 }
+
+
 
