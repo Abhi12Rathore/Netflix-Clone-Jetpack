@@ -18,6 +18,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,7 +31,7 @@ import com.example.netflixclone.utils.NavConstants
 @Composable
 fun ProfileSelection(navController: NavHostController) {
     Column() {
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         Header()
         Spacer(modifier = Modifier.height(10.dp))
         ProfileGrid(navController)
@@ -44,7 +45,7 @@ fun Header() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = 10.dp),
+            .padding(all = 20.dp),
         horizontalArrangement = Arrangement.SpaceBetween, // Aligns one item to the end
         verticalAlignment = Alignment.CenterVertically // Aligns items vertically to the center
     ) {
@@ -78,7 +79,7 @@ fun ProfileGrid(navController: NavHostController) {
     )
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2), contentPadding = PaddingValues(70.dp),
+        columns = GridCells.Fixed(2), contentPadding = PaddingValues(80.dp),
     ) {
         items(drawableList.size) {
             Column(
@@ -97,17 +98,17 @@ fun ProfileGrid(navController: NavHostController) {
                     painterResource(id = drawableList[it].image),
                     modifier = if (it == drawableList.size - 1) {
                         Modifier
-                            .height(35.dp)
-                            .width(35.dp)
+                            .height(30.dp)
+                            .width(30.dp)
                     } else {
                         Modifier
-                            .height(100.dp)
-                            .width(100.dp)
+                            .height(95.dp)
+                            .width(95.dp)
                     },
                     contentDescription = "profile_icon_$it",
                 )
-                Spacer(modifier = Modifier.height(5.dp))
-                Text(text = "  ${drawableList[it].name}", fontSize = 13.25.sp)
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(text = "  ${drawableList[it].name}", fontSize = 13.25.sp, color = Color.White)
             }
         }
     }
