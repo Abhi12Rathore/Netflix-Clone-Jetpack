@@ -55,7 +55,7 @@ fun Header() {
         val painter = painterResource(id = R.drawable.logos_netflix)
         Image(
             painter, contentDescription = "header_logo",
-            modifier = Modifier.size(width = 120.dp, height = 120.dp)
+            modifier = Modifier.size(width = 110.dp, height = 110.dp)
 
         )
         Spacer(modifier = Modifier.width(8.dp)) // Adds spacing between items

@@ -13,11 +13,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -25,10 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.netflixclone.R
+import com.example.netflixclone.ui.theme.PlayButtonBackground
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    Column {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Box {
             HomeTopBanner()
             Column() {
@@ -40,6 +49,12 @@ fun HomeScreen(navController: NavHostController) {
         ActionButtons()
     }
 
+}
+
+@Composable
+@Preview
+fun ViewTopRow() {
+    ActionButtons()
 }
 
 @Composable
@@ -58,11 +73,11 @@ fun TopRow() {
         )
 
         Spacer(modifier = Modifier.width(50.dp))
-        Text(text = "TV Shows", fontSize = 17.2.sp)
+        Text(text = "TV Shows", fontSize = 17.2.sp, color = Color.White)
         Spacer(modifier = Modifier.width(20.dp))
-        Text(text = "Movies", fontSize = 17.2.sp)
+        Text(text = "Movies", fontSize = 17.2.sp, color = Color.White)
         Spacer(modifier = Modifier.width(20.dp))
-        Text(text = "My List", fontSize = 17.2.sp)
+        Text(text = "My List", fontSize = 17.2.sp, color = Color.White)
     }
 }
 
@@ -81,42 +96,44 @@ fun ActionButtons() {
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(all = 20.dp)
+        modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 5.dp)
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
                 painterResource(id = R.drawable.add_icon_no_background),
                 contentDescription = "add_no_background",
                 modifier = Modifier
-                    .height(20.dp)
-                    .width(20.dp)
+                    .size(20.dp)
             )
-            Text(text = "My List", fontSize = 13.64.sp)
+            Spacer(modifier = Modifier.height(5.dp))
+
+            Text(text = "My List", fontSize = 18.sp, color = Color.White)
         }
-        Spacer(modifier = Modifier.width(20.dp))
+        Spacer(modifier = Modifier.width(50.dp))
 
-        Image(
-            painter = painterResource(R.drawable.home_play_icon),
-            contentDescription = null,
-            modifier = Modifier
-                .paint(
-                    painter = painterResource(R.drawable.play_button_background)
-                )
-                .padding(40.dp),
-        )
+        Button(
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(PlayButtonBackground),
+            shape = RoundedCornerShape(4.dp)
+        ) {
+            Text(
+                text = "Play", fontSize = 18.sp,
+                color = Color.Black
+            )
+        }
 
-        Spacer(modifier = Modifier.width(20.dp))
+        Spacer(modifier = Modifier.width(50.dp))
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
                 painterResource(id = R.drawable.info_icon),
                 contentDescription = "info_icon",
                 modifier = Modifier
-                    .height(20.dp)
-                    .width(20.dp)
+                    .size(20.dp)
 
             )
-            Text(text = "Info", fontSize = 13.64.sp)
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(text = "Info", fontSize = 18.sp, color = Color.White)
         }
     }
 }
