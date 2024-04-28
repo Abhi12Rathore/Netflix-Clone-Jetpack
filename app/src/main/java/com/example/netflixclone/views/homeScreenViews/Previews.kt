@@ -22,7 +22,7 @@ import com.example.netflixclone.R
 
 @Composable
 fun Previews() {
-    Column {
+    Column(modifier = Modifier.padding(15.dp)) {
         Text(
             text = "Previews",
             color = Color.White,
@@ -52,7 +52,9 @@ fun PreviewSlider() {
                 painterResource(id = imageList[it]),
                 contentDescription = "imageList$it",
                 modifier = Modifier
-                    .padding(start = 5.dp, end = 5.dp)
+                    .padding(start = 10.dp, end = 5.dp)
+                    .height(80.dp)
+                    .width(80.dp)
                     .clickable {
 
                     },
